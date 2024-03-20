@@ -1,0 +1,22 @@
+<core:FragmentDefinition xmlns:richtexteditor="sap.ui.richtexteditor"
+   xmlns="sap.m"
+   xmlns:rte="sap/ui/richtexteditor"
+   xmlns:core="sap.ui.core">
+   <Dialog
+      id="supportDialog"
+      title="{i18n>tooltip}" class="sapUiContentPadding" stretch="false" >
+        <VBox >
+          <Label text="{i18n>ticketTitle}" required="true"/>
+          <Input id="idTitle" value="{errorModel>/title}"/>
+          <!--<Label text="{i18n>ticketDescription}"/>-->
+          <Label text="{i18n>ticketDescriptionLong}" wrapping="true" class="sapUiSmallMarginTop" required="true"/>
+          <rte:RichTextEditor id="idDescription" width="100%" value="{errorModel>/description}"/>
+        </VBox>
+        <beginButton>
+          <Button type="Emphasized" text="{i18n>send}" press="onSend" enabled="{=${errorModel>/title} !== '' &amp;&amp; ${errorModel>/description} !== ''}"/>
+        </beginButton>
+        <endButton>
+          <Button type="Default" text="{i18n>cancel}" press="onCancel"/>
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>
