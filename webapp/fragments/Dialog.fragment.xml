@@ -10,7 +10,7 @@
           <Input id="idTitle" value="{errorModel>/title}"/>
           <!--<Label text="{i18n>ticketDescription}"/>-->
           <Label text="{i18n>ticketDescriptionLong}" wrapping="true" class="sapUiSmallMarginTop" required="true"/>
-          <rte:RichTextEditor id="idDescription" width="100%" value="{errorModel>/description}"/>
+          <rte:RichTextEditor id="idDescription" width="100%" value="{errorModel>/description}" sanitizeValue="false"/>
         </VBox>
         <beginButton>
           <Button type="Emphasized" text="{i18n>send}" press="onSend" enabled="{=${errorModel>/title} !== '' &amp;&amp; ${errorModel>/description} !== ''}"/>

@@ -1,1 +1,6 @@
 /* Enter your custom styles here */
+
+.zsupport-floating-support .sapMBtnInner{
+    border-radius: 50px; 
+    background: #fff;
+}

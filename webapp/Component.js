@@ -25,11 +25,18 @@ sap.ui.define([
 			
                 this._supportDialog = undefined;
                 
+                var btpUser = "";
+                try {
+                //    btpUser = sap.ushell.Container.getService("UserInfo").getUser().getEmail();
+                } catch (error) {
+                    
+                }
+
                 var oErrorModel = new JSONModel({
                     title : "",
                     description : "",
                     href : location.href,
-                    btpUser:sap.ushell.Container.getService("UserInfo").getId(),
+                    btpUser:btpUser,
                     osName:sap.ui.Device.os.name,
                     osVersion:sap.ui.Device.os.version.toString(),
                     browserName : sap.ui.Device.browser.name,
@@ -53,7 +60,15 @@ sap.ui.define([
                 }, true, false, [sap.ushell.renderers.fiori2.RendererExtensions.LaunchpadState.Home, sap.ushell.renderers.fiori2.RendererExtensions
 					.LaunchpadState.App
 				]);
-              
+                
+               /* sap.ushell.Container.getRenderer("fiori2").addFloatingActionButton("sap.ushell.ui.shell.ShellFloatingAction", {
+                    id: "floatingSupportBtn",
+                    icon: "sap-icon://headset",
+                    tooltip : this.getModel("i18n").getResourceBundle().getText("tooltip"),
+                    press:this.onOpenSupport.bind(this)}, true, true);
+
+                    sap.ui.getCore().byId("floatingSupportBtn").addStyleClass("zsupport-floating-support");
+                    */
             },
 
             onOpenSupport : function(oEvent){
@@ -84,11 +99,19 @@ sap.ui.define([
                 }
             },
             setModelData : function(){
+
+                var btpUser = "";
+                try {
+                 //   btpUser = sap.ushell.Container.getService("UserInfo").getUser().getEmail();
+                } catch (error) {
+                    
+                }
+
                 var oData = {
                     title : "",
                     description : "",
                     href : location.href,
-                    btpUser:sap.ushell.Container.getService("UserInfo").getId(),
+                    btpUser : btpUser,
                     osName:sap.ui.Device.os.name,
                     osVersion:sap.ui.Device.os.version.toString(),
                     browserName : sap.ui.Device.browser.name,
@@ -125,7 +148,7 @@ sap.ui.define([
                         sap.m.MessageToast.show(this.getModel("i18n").getResourceBundle().getText("success"));
                     }.bind(this),
                     error : function(oError){
-
+                        debugger;
                     }
                 });
             },
