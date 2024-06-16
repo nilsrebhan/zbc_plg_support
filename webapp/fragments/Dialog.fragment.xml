@@ -13,7 +13,7 @@
           <rte:RichTextEditor id="idDescription" width="100%" value="{errorModel>/description}" sanitizeValue="false"/>
         </VBox>
         <beginButton>
-          <Button type="Emphasized" text="{i18n>send}" press="onSend" enabled="{=${errorModel>/title} !== '' &amp;&amp; ${errorModel>/description} !== ''}"/>
+          <Button type="Emphasized" text="{i18n>send}" press="onSend" enabled="{=${errorModel>/title} !== '' &amp;&amp; ${errorModel>/description} !== ''}" busy="{runtime>/busy}"/>
         </beginButton>
         <endButton>
           <Button type="Default" text="{i18n>cancel}" press="onCancel"/>

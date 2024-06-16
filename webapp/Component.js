@@ -49,7 +49,8 @@ sap.ui.define([
                 });
 
                 this.setModel(oErrorModel,"errorModel");
-
+                
+                this.setModel(new JSONModel({busy : false}),"runtime");
 
                 sap.ushell.Container.getRenderer("fiori2").addHeaderEndItem("sap.ushell.ui.shell.ShellHeadItem", {
                     id: "supportBtn",
@@ -90,11 +91,13 @@ sap.ui.define([
                         this._supportDialog = oDialog;
                         this._supportDialog.setModel(this.getModel("i18n"),"i18n");
                         this._supportDialog.setModel(this.getModel("errorModel"),"errorModel");
+                        this._supportDialog.setModel(this.getModel("runtime"),"runtime");
                         this.getModel("errorModel")
                     }.bind(this));
                 } else {
                     this._supportDialog.setModel(this.getModel("i18n"),"i18n");
                     this._supportDialog.setModel(this.getModel("errorModel"),"errorModel");
+                    this._supportDialog.setModel(this.getModel("runtime"),"runtime");
                     this._supportDialog.open();
                 }
             },
@@ -137,18 +140,21 @@ sap.ui.define([
                     return;
                 }
 
+                this.getModel("runtime").setProperty("/busy", true);
+
                 var oModel = this.getModel(),
                     odata = this.getModel("errorModel").getData();
 
                 oModel.create("/ticketSet",odata,{
                     success : function(odata){
+                        this.getModel("runtime").setProperty("/busy", false);
                         if(this._supportDialog){
                             this._supportDialog.close();
                         }
                         sap.m.MessageToast.show(this.getModel("i18n").getResourceBundle().getText("success"));
                     }.bind(this),
                     error : function(oError){
-                        debugger;
+                        this.getModel("runtime").setProperty("/busy", false);
                     }
                 });
             },
