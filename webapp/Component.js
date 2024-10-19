@@ -22,7 +22,8 @@ sap.ui.define([
              * @override
              */
             init: function () {
-			
+                UIComponent.prototype.init.apply(this, arguments);
+
                 this._supportDialog = undefined;
                 
                 var btpUser = "";
