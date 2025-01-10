@@ -4,12 +4,26 @@
    xmlns:core="sap.ui.core">
    <Dialog
       id="supportDialog"
-      title="{i18n>tooltip}" class="sapUiContentPadding" stretch="false" >
+      title="{i18n>tooltip}" class="sapUiContentPadding" stretch="false" resizable="true">
         <VBox >
+        <MessageStrip
+				text="{i18n>support-text-1}"
+				type="Warning"
+				showCloseButton="false"
+				class="sapUiSmallMarginBottom">
+				<link>
+					<Link text="{i18n>link-text}"
+						target="_blank"
+						href="https://porscheholding.sharepoint.com/sites/POR00000311" />
+				</link>
+			</MessageStrip>
+          <!--<Text text="{i18n>support-text-1}"/>
+          <Link icon="sap-icon://action" text="{i18n>link-text}" href="https://porscheholding.sharepoint.com/sites/POR00000311" target="_blank" class="sapUiSmallMarginTopBottom"/>-->
+          <Text text="{i18n>support-text-2}" class="sapUiSmallMarginBottom"/>
           <Label text="{i18n>ticketTitle}" required="true"/>
           <Input id="idTitle" value="{errorModel>/title}"/>
           <!--<Label text="{i18n>ticketDescription}"/>-->
-          <Label text="{i18n>ticketDescriptionLong}" wrapping="true" class="sapUiSmallMarginTop" required="true"/>
+          <!--<Label text="{i18n>ticketDescriptionLong}" wrapping="true" class="sapUiSmallMarginTop" required="true"/>-->
           <rte:RichTextEditor id="idDescription" width="100%" value="{errorModel>/description}" sanitizeValue="false"/>
         </VBox>
         <beginButton>

@@ -40,7 +40,7 @@
       "ui5-task-flatten-library",
       "@sap/ui5-builder-webide-extension",
       "ui5-task-zipper",
-      "mbt"
+        "mbt"
     ]
   }
 }

@@ -4,3 +4,87 @@
     border-radius: 50px; 
     background: #fff;
 }
+.zsupport-bar .sapMBarLeft{
+    justify-content: center;
+}
+
+.zsupport-bar .sapMBtnInner{
+    background:#D4021C;
+    color: white;
+    border: 0px;
+    border-radius: 0px;
+    /*-o-transition: background .3s ease-out;
+    -ms-transition: background .3s ease-out;
+    -moz-transition: background .3s ease-out;
+    -webkit-transition: background .3s ease-out;
+    transition: background .3s ease-out;*/
+}
+
+.supportBtn {
+    position: fixed;
+    z-index: 99;
+    left: 50%;
+    top: 0rem;
+    height: 0!important;
+    width: 120px;
+    margin-top:0px;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    transform: translateY(-50%) rotate(0deg);
+    -webkit-animation-name: rollIn;
+    animation-name: rollIn;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+}
+@media (max-width: 391px) { 
+    /* mehrspaltiges Layout für breitere Bildschirme */ 
+    .supportBtn {
+        left: 40%;
+        top: 0rem;
+    }
+  }
+
+.supportBtn > .sapMBtnInner {
+    background:#D4021C;
+    color: white;
+    border: 0px;
+    border-radius: 0px 0px 10px 10px;
+    height: 34px !important;
+    padding-top: 2px;
+    -o-transition: background .3s ease-out;
+    -ms-transition: background .3s ease-out;
+    -moz-transition: background .3s ease-out;
+    -webkit-transition: background .3s ease-out;
+    transition: background .3s ease-out;
+    font-weight:bold
+}
+     
+.supportBtn:hover > .sapMBtnInner {
+    background: #940014;
+    color: white !important;
+}
+.supportBtn .sapMBtnInner.sapMBtnText .sapMBtnIcon {
+    padding-top: 5px;
+}
+
+@-webkit-keyframes rollIn {
+    0% { 
+       opacity: 0; 
+       -webkit-transform: translateX(-100%) ; 
+    }
+    100% { 
+       opacity: 1; 
+       -webkit-transform: translateX(0px); 
+    }
+ }
+ 
+ @keyframes rollIn {
+    0% { 
+       opacity: 0; 
+       transform: translateY(-100%) ; 
+    }
+    100% { 
+       opacity: 1; 
+       transform: translateY(0px); 
+    }
+ }

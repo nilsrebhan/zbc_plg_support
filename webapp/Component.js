@@ -53,26 +53,24 @@ sap.ui.define([
                 
                 this.setModel(new JSONModel({busy : false}),"runtime");
 
-                sap.ushell.Container.getRenderer("fiori2").addHeaderEndItem("sap.ushell.ui.shell.ShellHeadItem", {
-                    id: "supportBtn",
-                    icon: "sap-icon://sys-help", 
-                    text:"Support",
-                    tooltip : this.getModel("i18n").getResourceBundle().getText("tooltip"),
-                    press:this.onOpenSupport.bind(this)
-                }, true, false, [sap.ushell.renderers.fiori2.RendererExtensions.LaunchpadState.Home, sap.ushell.renderers.fiori2.RendererExtensions
-					.LaunchpadState.App
-				]);
-                
-               /* sap.ushell.Container.getRenderer("fiori2").addFloatingActionButton("sap.ushell.ui.shell.ShellFloatingAction", {
-                    id: "floatingSupportBtn",
-                    icon: "sap-icon://headset",
-                    tooltip : this.getModel("i18n").getResourceBundle().getText("tooltip"),
-                    press:this.onOpenSupport.bind(this)}, true, true);
-
-                    sap.ui.getCore().byId("floatingSupportBtn").addStyleClass("zsupport-floating-support");
-                    */
+                this.addFloatingButton();
             },
 
+            addFloatingButton : function(oEvent){
+                var oRenderer = sap.ushell.Container.getRenderer("fiori2");
+                var b = new sap.m.Button({
+                    /*icon: "sap-icon://sys-help",*/
+                    text:"Support",
+                    press: function () {
+                        this.onOpenSupport()
+                    }.bind(this)
+                });
+     
+                b.addStyleClass("supportBtn");
+     
+                oRenderer.getRootControl().addContent(b);
+            },
+                        
             onOpenSupport : function(oEvent){
                 var oView = this;
 
