@@ -54,6 +54,20 @@ sap.ui.define([
                 this.setModel(new JSONModel({busy : false}),"runtime");
 
                 this.addFloatingButton();
+
+                sap.ui.require(["sap/ushell/Container"], async function (Container) {
+                    const URLParsing = await Container.getServiceAsync("URLParsing");
+                    
+                    try {
+                        if(URLParsing.parseShellHash(window.location.hash).params && URLParsing.parseShellHash(window.location.hash).params.hasOwnProperty("support") && URLParsing.parseShellHash(window.location.hash).params.support[0] === "true"){
+                            this.onOpenSupport();
+                            // Remove Start Support Parameter from URL
+                            window.location.href = window.location.href.replace("?support=true","");
+                        }
+                    } catch (error) {
+                        // do nothing
+                    }
+                  }.bind(this));
             },
 
             addFloatingButton : function(oEvent){
